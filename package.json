@@ -4,8 +4,8 @@
   "description": "A web app that lets young people cast mock votes using Facebook",
   "main": "src/app/index.jsx",
   "scripts": {
-    "lint": "npx eslint src/",
-    "mocha": "npx mocha spec/**/*.spec.* --recursive --require babel-register --require spec-setup.js",
+    "lint": "eslint src/",
+    "mocha": "mocha spec/**/*.spec.* --recursive --require babel-register --require spec-setup.js",
     "build": "parcel build src/app/index.html",
     "test": "npm run lint && npm run mocha",
     "start": "parcel src/app/index.html"
