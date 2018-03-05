@@ -6,13 +6,17 @@
   "scripts": {
     "lint": "eslint src/",
     "mocha": "mocha spec/**/*.spec.* --recursive --require babel-register --require spec-setup.js",
-    "build": "parcel build src/app/index.html --public-url ./",
-    "test": "npm run lint && npm run mocha",
+    "build-app": "parcel build src/app/index.html --public-url ./ -d dist/app",
+    "zip-lambda": "zip -j dist/api/lambda.zip src/api/*",
+    "build-api": "npm run zip-lambda",
+    "deploy-api": "sls deploy",
+    "test": "NODE_ENV=test npm run lint && npm run mocha",
     "start": "parcel src/app/index.html"
   },
   "author": "WH",
   "license": "MIT",
   "devDependencies": {
+    "aws-sdk": "^2.205.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
@@ -24,9 +28,11 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",
+    "express": "^4.16.2",
+    "http-proxy-middleware": "^0.17.4",
     "mocha": "^5.0.1",
     "node-sass": "^4.7.2",
-    "parcel-bundler": "^1.6.1",
+    "parcel-bundler": "^1.6.2",
     "sinon": "^4.3.0"
   },
   "dependencies": {
