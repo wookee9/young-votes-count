@@ -8,7 +8,9 @@ script:
   - yarn run build
 
 deploy:
+  skip_cleanup: true
   provider: script
-  script: bash bin/deploy
+  script:
+    - sh bin/deploy
   on:
     branch: master
