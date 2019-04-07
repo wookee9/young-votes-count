@@ -11,7 +11,7 @@ module.exports = merge(
     mode: 'production',
     devtool: 'source-map',
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'dist/app'),
       publicPath: '/',
       filename: '[name].[contenthash].bundle.js',
     },

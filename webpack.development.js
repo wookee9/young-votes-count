@@ -11,9 +11,10 @@ module.exports = merge(
     mode: 'development',
     devtool: 'cheap-eval-source-map',
     devServer: {
-      contentBase: './dist',
+      contentBase: './dist/app',
       hot: true,
       host: '0.0.0.0',
+      port: 8001,
       historyApiFallback: true,
     },
     module: {

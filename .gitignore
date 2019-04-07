@@ -1,3 +1,9 @@
 node_modules
 .cache
 dist
+
+# package directories
+jspm_packages
+
+# Serverless directories
+.serverless
