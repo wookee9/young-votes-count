@@ -7,12 +7,13 @@
     "lint": "eslint src/",
     "mocha": "mocha spec/**/*.spec.* --recursive --require babel-register --require spec-setup.js",
     "build": "parcel build src/app/index.html --public-url ./",
-    "test": "npm run lint && npm run mocha",
+    "test": "yarn run lint && yarn run mocha",
     "start": "parcel src/app/index.html"
   },
   "author": "WH",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
