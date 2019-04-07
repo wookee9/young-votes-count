@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+: ${CI:?"This script can only be run on CI"}
+
+echo "deploying..."
+
+./node_modules/.bin/sls deploy --verbose --stage production
+
+exit 0

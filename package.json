@@ -8,7 +8,7 @@
     "mocha": "mocha spec/**/*.spec.* --recursive --require babel-register --require spec-setup.js",
     "build": "webpack --config webpack.production.js",
     "test": "yarn run lint && yarn run mocha",
-    "start": "webpack-dev-server --config webpack.development.js"
+    "start": "webpack-dev-server --config webpack.development.js & sls offline"
   },
   "author": "WH",
   "license": "MIT",
@@ -40,6 +40,8 @@
     "node-sass": "^4.7.2",
     "react-hot-loader": "^4.8.3",
     "sass-loader": "^7.1.0",
+    "serverless": "^1.40.0",
+    "serverless-offline": "^4.9.4",
     "sinon": "^4.3.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
@@ -52,6 +54,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.0"
+    "react-router-dom": "^5.0.0",
+    "serverless-s3-sync": "^1.7.3"
   }
 }

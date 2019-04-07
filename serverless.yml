@@ -1,0 +1,67 @@
+service: young-votes-count
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-1
+
+functions:
+  auth:
+    handler: src/api/lambda.auth
+    memorySize: 320
+    events:
+      - http:
+          path: /auth
+          method: get
+
+resources:
+  Resources:
+    YoungVotesCount:
+      Type: AWS::S3::Bucket
+      Properties:
+        AccessControl: PublicRead
+        BucketName: ${self:custom.siteName}
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: 404.html
+
+    YoungVotesCountS3BucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: YoungVotesCount
+        PolicyDocument:
+          Statement:
+            - Sid: PublicReadGetObject
+              Effect: Allow
+              Principal: "*"
+              Action:
+              - s3:GetObject
+              Resource:
+                Fn::Join: [
+                  "", [
+                    "arn:aws:s3:::",
+                    {
+                      "Ref": "YoungVotesCount"
+                    },
+                    "/*"
+                  ]
+                ]
+
+plugins:
+  - serverless-offline
+  - serverless-s3-sync
+
+custom:
+  serverless-offline:
+    port: 8002
+  siteName: youngvotescount.org
+  s3Sync:
+  - bucketName: ${self:custom.siteName}
+    localDir: dist/app
+    params: # optional
+      - index.html:
+          CacheControl: 'no-cache'
+      - "*.js":
+          CacheControl: 'public, max-age=31536000'
