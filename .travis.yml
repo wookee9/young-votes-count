@@ -4,7 +4,8 @@ node_js:
 
 cache: yarn
 
-script: npm run build
+script:
+  - yarn run build
 
 deploy:
   provider: script
