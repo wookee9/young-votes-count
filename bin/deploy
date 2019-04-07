@@ -3,8 +3,7 @@ set -e
 : ${CI:?"This script can only be run on CI"}
 
 echo "deploying..."
-pwd
 
-npx sls deploy -v -s production --conceal
+serverless deploy -v -s production --conceal
 
 exit 0

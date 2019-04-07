@@ -9,6 +9,8 @@ script:
 
 deploy:
   provider: script
-  script: bash bin/deploy
+  script:
+    - npm install -g serverless
+    - bash bin/deploy
   on:
     branch: master
