@@ -5,7 +5,7 @@
   "main": "src/app/index.jsx",
   "scripts": {
     "lint": "eslint src/",
-    "mocha": "mocha spec/**/*.spec.* --recursive --require babel-register --require spec-setup.js",
+    "mocha": "NODE_ENV=test mocha -r @babel/register -r spec-setup.js spec/**/*.spec.* --recursive",
     "build": "webpack --config webpack.production.js",
     "test": "yarn run lint && yarn run mocha",
     "start": "webpack-dev-server --config webpack.development.js & sls offline"
@@ -18,8 +18,8 @@
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.0",
     "babel-loader": "^8.0.5",
-    "babel-register": "^6.26.0",
     "bootstrap": "^4.3.1",
     "chai": "^4.2.0",
     "clean-webpack-plugin": "^2.0.1",
