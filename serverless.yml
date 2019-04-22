@@ -11,6 +11,9 @@ package:
     - ./**
   include:
     - src/api/**
+    - node_modules/jsonwebtoken
+    - node_modules/universal-cookie
+    - node_modules/dotenv-load
 
 functions:
   auth:
@@ -19,6 +22,13 @@ functions:
     events:
       - http:
           path: api/auth
+          method: post
+  verify:
+    handler: src/api/lambda.verify
+    memorySize: 320
+    events:
+      - http:
+          path: api/verify
           method: get
 
 resources:
