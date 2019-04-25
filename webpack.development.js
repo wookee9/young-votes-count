@@ -16,6 +16,9 @@ module.exports = merge(
       host: '0.0.0.0',
       port: 8001,
       historyApiFallback: true,
+      proxy: {
+        '/api': 'http://localhost:8002',
+      },
     },
     module: {
       rules: [
