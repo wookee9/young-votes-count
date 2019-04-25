@@ -18,7 +18,7 @@ functions:
     memorySize: 320
     events:
       - http:
-          path: /auth
+          path: api/auth
           method: get
 
 resources:
