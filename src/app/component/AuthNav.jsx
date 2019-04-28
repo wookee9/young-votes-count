@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const AuthNav = ({
   isAuthenticated,
   signout,
+  username,
 }) => {
   const handleLogout = (e) => {
     e.preventDefault();
@@ -15,7 +16,7 @@ const AuthNav = ({
   if (isAuthenticated) {
     return (
       <React.Fragment>
-        <Link to="/profile" className="nav-link">User</Link>
+        <Link to="/profile" className="nav-link">Profile - {username}</Link>
         <a
           href="#"
           className="nav-link"
@@ -34,9 +35,14 @@ const AuthNav = ({
   );
 };
 
+AuthNav.defaultProps = {
+  username: null,
+};
+
 AuthNav.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   signout: PropTypes.func.isRequired,
+  username: PropTypes.string,
 };
 
 export default AuthNav;
