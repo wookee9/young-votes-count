@@ -1,3 +1,5 @@
+/* eslint no-console: ["error", { allow: ["error","info"] }] */
+
 const { retrieveAuthCookie, verifyJwt, signJwt } = require('./actions');
 const {
   authedResponse,
@@ -26,12 +28,15 @@ module.exports.auth = async (event) => {
 
 module.exports.verify = async (event) => {
   const secret = process.env.YVC_JWT_SECRET_KEY;
-  const userToken = retrieveAuthCookie(event.headers.cookie, userCookieKey);
+  // serverless-offline seems to provide a lowercase 'cookie' header. Lambda capitalises it.
+  const cookies = event.headers.Cookie || event.headers.cookie;
+  const userToken = retrieveAuthCookie(cookies, userCookieKey);
 
   try {
     verifyJwt(userToken, secret);
     return verifiedResponse;
   } catch (err) {
+    console.error(err);
     return unauthedResponse;
   }
 };
