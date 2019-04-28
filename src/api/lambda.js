@@ -6,11 +6,11 @@ const {
   errorResponse,
 } = require('./responses');
 
-const secret = process.env.YVC_JWT_SECRET_KEY;
-const acceptedUsername = process.env.ACCEPTED_USERNAME;
 const userCookieKey = 'yvc-user';
 
 module.exports.auth = async (event) => {
+  const secret = process.env.YVC_JWT_SECRET_KEY;
+  const acceptedUsername = process.env.ACCEPTED_USERNAME;
   const { username } = JSON.parse(event.body);
 
   if (!username) return errorResponse;
@@ -25,6 +25,7 @@ module.exports.auth = async (event) => {
 };
 
 module.exports.verify = async (event) => {
+  const secret = process.env.YVC_JWT_SECRET_KEY;
   const userToken = retrieveAuthCookie(event.headers.cookie, userCookieKey);
 
   try {
