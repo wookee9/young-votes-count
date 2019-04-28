@@ -30,6 +30,13 @@ functions:
       - http:
           path: api/verify
           method: get
+  test:
+    handler: src/api/lambda.test
+    memorySize: 320
+    events:
+      - http:
+          path: api/test
+          method: get
 
 resources:
   Resources:
