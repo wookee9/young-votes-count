@@ -35,3 +35,12 @@ module.exports.verify = async (event) => {
     return unauthedResponse;
   }
 };
+
+module.exports.test = async () => {
+  const test = process.env.TEST;
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ test }),
+  };
+};
