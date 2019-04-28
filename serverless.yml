@@ -6,14 +6,14 @@ provider:
   stage: dev
   region: us-east-1
 
-package:
-  exclude:
-    - ./**
-  include:
-    - src/api/**
-    - node_modules/jsonwebtoken
-    - node_modules/universal-cookie
-    - node_modules/dotenv-load
+# package:
+#   exclude:
+#     - ./**
+#   include:
+#     - src/api/**
+#     - node_modules/jsonwebtoken
+#     - node_modules/universal-cookie
+#     - node_modules/dotenv-load
 
 functions:
   auth:
